@@ -51,22 +51,20 @@ function displayGames(games) {
             <div class="rating-tag">${games.rating}</div>
             <div class="difficulty-tag">${games.difficulty}</div>
         </section>
-        <section class="bot-card">
+        <sec class="bottom-card">
             <h2>${games.title}</h2>
-            <section class="tag-container">
-                <div class="tags">
-                    <p>${game.genre}</p>
-                </div>
-                <div class="tags">
-                    <p>${game.playtime}</p>
-                </div>
-                <div class="tags">
-                    <p>${game.players}</p>
-                </div>
-                <div class="tags">
-                    <p>${game.language}</p>
-                </div>
-            </section>
+            <div class="tags">
+                <p>${game.genre}</p>
+            </div>
+            <div class="tags">
+                <p>${game.playtime}</p>
+            </div>
+            <div class="tags">
+                <p>${game.players}</p>
+            </div>
+            <div class="tags">
+                <p>${game.language}</p>
+            </div>
         </section>
     </article>
   `;

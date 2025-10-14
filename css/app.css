@@ -16,7 +16,8 @@
   --card-background-color: #fafafa;
   --tag-background-color: #f8f8f8;
   --tag-border-color: #e0e0e0;
-  --rating-yellow-gradient: 
+  --rating-yellow-gradient: linear-gradient(to bottom, #e6cd53 16%, #ffe35a 51%, #e6cd53 88%);
+
 
   /* effect styles */
   --shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.05);
@@ -56,6 +57,49 @@ height: 160px;
 border-radius: 16px 16px 0 0;
 }
 
+/* Rating på billede */
+.rating-tag {
+display: inline-flex;
+padding: 4px 8px 4px 4px;
+justify-content: center;
+align-items: center;
+gap: 4px;
+border-radius: 0 16px 16px 0;
+background: var(--rating-yellow-gradient);
+box-shadow: var(--shadow);
+}
+
+/* Aldersgrænse på billede */
+.age-tag {
+  display: inline-flex;
+padding: 4px 12px 4px 8px;
+justify-content: flex-end;
+align-items: flex-start;
+gap: 8px;
+border-radius: 16px 0 0 16px;
+background: var(--card-background-color);
+}
+
+/* Sværhedsgrad på billede */
+.difficulty {
+  display: inline-flex;
+padding: 4px 8px 4px 4px;
+justify-content: center;
+align-items: center;
+gap: 4px;
+border-radius: 0 16px 16px 0;
+background: var(--card-background-color);
+box-shadow: var(--shadow);
+}
+
+/* Billede af brætspil */
+.game-image {
+  width: 100%;
+  object-fit: cover;
+  background: var(--card-background-color);
+  transition: var(--transition);
+}
+
 /* Nedre card */
 .bottom-card {
   display: flex;
@@ -67,19 +111,21 @@ gap: 4px;
 background: var(--card-background-color);
 }
 
-.rating-tag {
-display: inline-flex;
-padding: 4px 8px 4px 4px;
+.card-titel {
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+align-self: stretch;
+}
+
+.tags {
+display: flex;
+padding: 4px 8px;
 justify-content: center;
 align-items: center;
 gap: 4px;
-border-radius: 0 16px 16px 0;
+border-radius: 16px;
+border: 0.5px solid var(--tag-border-color);
+background: var(--card-background-color);
+box-shadow: var(--shadow);
 }
-
-.game-image {
-  width: 100%;
-  object-fit: cover;
-  background: var(--card-background-color);
-  transition: var(--transition);
-}
-
