@@ -19,6 +19,7 @@
 
   /* effect styles */
   --shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.05);
+  --transition: 250ms ease;
 }
 
 
@@ -35,6 +36,18 @@ border-radius: 16px;
 border: 0.5px solid var(--tag-border-color);
 background: var(--tag-background-color);
 box-shadow: var(--shadow);
-
 }
 
+.game-card {
+  background: var(--card-background-color);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.game-image {
+  width: 100%;
+  object-fit: cover;
+  background: var(--card-background-color);
+  transition: var(--transition);
+}
