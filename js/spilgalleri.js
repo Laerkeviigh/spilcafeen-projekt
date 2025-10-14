@@ -1,40 +1,81 @@
 "use strict"
 
+
+
 /*SPILGALLERI*/
 
   // søg
   const searchInput = document.getElementById('search');
   searchInput.addEventListener('input', () => renderCards(currentGames));
 
+let allGames = []
 
-  // #4: Render a single movie card and add event listeners
+// #2: Fetch games from JSON file
+async function getGames() {
+  const response = await fetch(
+    "https://raw.githubusercontent.com/cederdorff/race/refs/heads/master/data/movies.json"
+  );
+  allGames = await response.json();
+  console.log("📁 Games loaded:", allGames.length);
+  populateCategoryDropdown(); // Udfyld dropdown med genrer fra data
+  displayGames(allGames);
+}
+
+// #3: Display all games
+function displayGames(games) {
+  const gameList = document.querySelector("#game-list");
+  gameList.innerHTML = "";
+
+  if (games.length === 0) {
+    gameList.innerHTML =
+      '<p class="no-results">Ingen spil matchede dine filtre 😢</p>';
+    return;
+  }
+
+  for (const game of games) {
+    displayGame(game);
+  }
+}
+
+  // #4: Render a single game card and add event listeners
   function displayGames(games) {
-  const gameList = document.querySelector("#movie-list");
+  const gameList = document.querySelector("#game-list");
 
-  const movieHTML = `
-    <article class="movie-card" tabindex="0">
-    <section class="top-card">
-        <img src="${games.image}" 
-           alt="${games.title}" 
-           class="game-image" />
-        <div class="age-tag">${games.age}</div>
-        <div class="rating-tag">${games.rating}</div>
-        <div class="difficulty-tag">${games.difficulty}</div>
-    </section>
-    <section class="bot-card">
-        <h2>${games.title}</h2>
-        <section class="tag-container">
-            <div class="genre.tag></div>
+  const gameHTML = `
+    <article class="game-card" tabindex="0">
+        <section class="top-card">
+            <img src="${games.image}" 
+            alt="${games.title}" 
+            class="game-image" />
+            <div class="age-tag">${games.age}</div>
+            <div class="rating-tag">${games.rating}</div>
+            <div class="difficulty-tag">${games.difficulty}</div>
         </section>
-    </section>
-      
-      <div class="game-desciption-container">
-        <h3>${movie.title} <span class="movie-year">(${movie.year})</span></h3>
-        <p class="movie-genre">${movie.genre.join(", ")}</p>
-        <p class="movie-rating">⭐ ${movie.rating}</p>
-        <p class="movie-director"><strong>Director:</strong> ${
-          movie.director
-        }</p>
-      </div>
+        <section class="bot-card">
+            <h2>${games.title}</h2>
+            <section class="tag-container">
+                <div class="tags">
+                    <p>${game.genre}</p>
+                </div>
+                <div class="tags">
+                    <p>${game.playtime}</p>
+                </div>
+                <div class="tags">
+                    <p>${game.players}</p>
+                </div>
+                <div class="tags">
+                    <p>${game.language}</p>
+                </div>
+            </section>
+        </section>
     </article>
   `;
+    gameList.insertAdjacentHTML("beforeend", gameHTML);
+
+    // Tilføj click event til den nye card
+    const newCard = gameList.lastElementChild;
+    newCard.addEventListener("click", function () {
+        console.log(`Klik på: "${game.title}"`);
+        showGameModal(game); // ÆNDRET: Fra showGameDetails til showGameModal
+    });
+    }

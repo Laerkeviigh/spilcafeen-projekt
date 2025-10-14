@@ -16,6 +16,7 @@
   --card-background-color: #fafafa;
   --tag-background-color: #f8f8f8;
   --tag-border-color: #e0e0e0;
+  --rating-yellow-gradient: 
 
   /* effect styles */
   --shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.05);
@@ -25,6 +26,16 @@
 
 
 /* Card in general */
+/* Card */
+.game-card {
+  display: flex;
+flex-direction: column;
+align-items: flex-start;
+border-radius: 16px;
+background: var(--card-background-color);
+box-shadow: var(--shadow);
+}
+
 /* Tags */
 .tags {
   display: flex;
@@ -38,11 +49,31 @@ background: var(--tag-background-color);
 box-shadow: var(--shadow);
 }
 
-.game-card {
-  background: var(--card-background-color);
-  box-shadow: var(--shadow);
-  overflow: hidden;
-  transition: var(--transition);
+/* Øvre card */
+.top-card {
+width: 160px;
+height: 160px;
+border-radius: 16px 16px 0 0;
+}
+
+/* Nedre card */
+.bottom-card {
+  display: flex;
+width: 160px;
+padding: 4px 8px 8px 8px;
+flex-direction: column;
+align-items: flex-start;
+gap: 4px;
+background: var(--card-background-color);
+}
+
+.rating-tag {
+display: inline-flex;
+padding: 4px 8px 4px 4px;
+justify-content: center;
+align-items: center;
+gap: 4px;
+border-radius: 0 16px 16px 0;
 }
 
 .game-image {
@@ -51,3 +82,4 @@ box-shadow: var(--shadow);
   background: var(--card-background-color);
   transition: var(--transition);
 }
+

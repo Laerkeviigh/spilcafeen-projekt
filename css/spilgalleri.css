@@ -1,40 +1,71 @@
-/* styles for spilgalleri */
-
 
 body {
   font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
   background: var(--bg);
   margin: 0;
   color: #222;
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-/* Header */
-.gallery-header{
-  display:flex;
-  align-items:center;
-  gap: 12px;
+
+.gallery-header {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  position: relative; 
   padding: 20px;
-  background: transparent;
-  position: sticky;
-  top: 0;
-  z-index: 10;
 }
-.back-btn{
-  background: none;
-  border: none;
-  font-size: 18px;
-  cursor: pointer;
-}
-.gallery-header h1{
+
+.gallery-header h1 {
   margin: 0;
-  font-size: 20px;
-  flex: 1;
+  font-size: 24px;
+  text-align: center;
 }
-.header-actions input{
+
+.back-btn {
+  position: absolute; 
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #EBDFD7;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.back-btn:hover {
+  background-color: #d8cfc3;
+}
+
+
+.gallery-main {
+  flex: 1; 
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: flex-start;
+  padding: 20px;
+}
+
+.search-container {
+  margin-top: 20px; 
+}
+
+.search-container input {
   padding: 8px 10px;
   border-radius: 8px;
   border: 1px solid #e2dfde;
+  width: 300px;
 }
 
+
+footer {
+  text-align: center;
+  padding: 10px 0;
+  font-size: 14px;
+  background: transparent;
+}
