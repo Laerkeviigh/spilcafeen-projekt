@@ -1,5 +1,34 @@
 
-/*LOCATION*/
+body {
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  position: relative;
+}
+
+/* Baggrundsbilledet */
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("../img/forsidebaggrund.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.2;
+  z-index: 0; 
+}
+
+.location {
+  position: relative;
+  z-index: 1; 
+}
+
+
 .location h2 {
     color: #000;
     text-align: center;
@@ -50,4 +79,16 @@ footer {
     padding: 10px 20px;   
     text-align: center;   
     font-size: 14px;       
+}
+
+
+
+/* fade-ind effekt */
+.location {
+  opacity: 0;                 /* starter skjult */
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.location.fade-in {
+  opacity: 1;                 /* bliver synlig */
 }
