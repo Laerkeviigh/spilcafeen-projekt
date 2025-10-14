@@ -1,0 +1,35 @@
+/*LOCATION*/
+.location h2 {
+    width: 260px;
+    height: 25px;
+    flex-shrink: 0;
+    color: #000;
+    text-align: center;
+    font-family: var(--header-font-family);
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.button {
+ 	display: flex;
+	width: 300px;
+	height: 80px;
+	padding: 16px 32px;
+	justify-content: center;
+	align-items: center;
+	gap: 8px;
+	flex-shrink: 0;
+    border-radius: 15px;
+	background: #EBDFD7;
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25);
+    color: #000;
+ 	font-family: Poppins;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    border: none;
+    flex-direction: column;
+}
