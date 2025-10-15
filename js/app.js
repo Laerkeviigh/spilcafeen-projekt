@@ -101,6 +101,7 @@ function displayGames(games) {
   `;
   gameList.insertAdjacentHTML("beforeend", gameHTML);
 
+<<<<<<< HEAD
   // Tilføj click event til den nye card
   const newCard = gameList.lastElementChild;
   newCard.addEventListener("click", function () {
@@ -219,3 +220,17 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // Dropdown-menu //// Åbn/luk dropdowns
+=======
+    // Tilføj click event til den nye card
+    const newCard = gameList.lastElementChild;
+    newCard.addEventListener("click", function () {
+        console.log(`Klik på: "${game.title}"`);
+        showGameModal(game); // ÆNDRET: Fra showGameDetails til showGameModal
+    });
+    }
+
+
+    
+
+
+>>>>>>> 27cbeb8edf7952bd2831a2498684d90bd051a1a2
