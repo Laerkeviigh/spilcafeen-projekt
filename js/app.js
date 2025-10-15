@@ -54,7 +54,7 @@ async function getGames() {
 
 // #3: Display all games
 function displayGames(games) {
-  const gameList = document.querySelector("#game-list");
+  const gameList = document.querySelector("#game-list-all");
   gameList.innerHTML = "";
 
   if (games.length === 0) {
@@ -70,7 +70,7 @@ function displayGames(games) {
 
 // #4: Render a single game card and add event listeners
 function displayGames(games) {
-  const gameList = document.querySelector("#game-list");
+  const gameList = document.querySelector("#game-list-all");
 
   const gameHTML = `
     <article class="game-card" tabindex="0">
@@ -83,7 +83,7 @@ function displayGames(games) {
             <div class="difficulty-tag">${games.difficulty}</div>
         </section>
         <sec class="bottom-card">
-            <h2>${games.title}</h2>
+            <h2 class="card-titel">${games.title}</h2>
             <div class="tags">
                 <p>${game.genre}</p>
             </div>
@@ -110,25 +110,32 @@ function displayGames(games) {
 }
 
 //Game Card Dialog
+function showGameModal(id) {
+  const game = allGames.find((g) => g.id == id);
 
-function showGameCard(game) {
-  // Find modal indhold container og byg HTML struktur dynamisk
   document.querySelector("#dialog-content").innerHTML = /*html*/ `
-    <img src="${game.image}" alt="Poster af ${game.title}" class="movie-poster">
+    <img src="${game.image}" alt="${game.title}" class="movie-poster" />
     <div class="dialog-details">
-    <h2>${game.title}</h2>
-      <div class="tags"><p>${game.genre}</p></div>
-      <div class="tags"><p>${game.playtime} min</p></div>
-      <div><p</div>
-      <div class="tags"><p>${game.rating}</p></div>
-    
-      <p class="tags">${game.description}</p>
+      <h2>${game.title}</h2>
+      <p class="movie-genre">${game.genre}</p>
+      <p class="movie-rating">☆ ${game.rating}</p>
+      <p><strong>Spilletid:</strong> ${game.playtime} min</p>
+      <p><strong>Spillere:</strong> ${game.players.min}-${game.players.max}</p>
+      <p><strong>Alder:</strong> ${game.age}+</p>
+      <p><strong>Sværhedsgrad:</strong> ${game.difficulty}</p>
+      <p><strong>Sprog:</strong> ${game.language}</p>
+      <p><strong>Placering:</strong> ${game.location}, hylde ${game.shelf}</p>
+      <p class="movie-description">${game.rules}</p>
     </div>
   `;
+
+  document.querySelector("#game-dialog").showModal();
 }
 
-// Åbn modalen - showModal() er en built-in browser funktion
-document.querySelector("#gamecard-dialog").showModal();
+// Luk dialog på klik af X
+document.querySelector("#close-dialog").addEventListener("click", () => {
+  document.querySelector("#game-dialog").close();
+});
 
 /*Vestergade sektion*/
 
@@ -178,19 +185,6 @@ function renderVestergadeGames(games) {
 // Kør funktionen når DOM’en er klar
 document.addEventListener("DOMContentLoaded", loadVestergadeGames);
 
-//Alle spil sektion//
-
-async function loadAllGames() {
-  try {
-    const response = await fetch("../data/games.json");
-    const games = await response.json();
-
-    renderAllGames(games);
-  } catch (error) {
-    console.error("Fejl ved indlæsning af alle spil:", error);
-  }
-}
-
 // Render ALLE spil i vertikal liste
 function renderAllGames(games) {
   const container = document.getElementById("all-games-list");
@@ -223,3 +217,5 @@ document.addEventListener("DOMContentLoaded", () => {
   loadVestergadeGames();
   loadAllGames();
 });
+
+// Dropdown-menu //// Åbn/luk dropdowns
