@@ -298,3 +298,27 @@ footer {
 
 
 /*SPILGALLERI*/
+body {
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  position: relative;
+}
+
+/* Baggrundsbilledet */
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("../img/forsidebaggrund.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.2;
+  z-index: 0; 
+}
+

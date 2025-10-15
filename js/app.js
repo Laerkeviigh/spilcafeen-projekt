@@ -111,3 +111,8 @@ function displayGames(games) {
         showGameModal(game); // ÆNDRET: Fra showGameDetails til showGameModal
     });
     }
+
+
+    
+
+
