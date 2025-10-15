@@ -6,10 +6,8 @@
     <link rel="stylesheet" href="../css/app.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"/>
     <title>Spilgalleri</title>
   </head>
   
@@ -20,63 +18,68 @@
       <button class="search-btn"><input type="text" placeholder="SØG...">🔍</button>
     </header>
     
-<<<<<<< HEAD
- <section class="filter-bar">  
-<div class="filter-group">
-  <label for="difficulty-select"></label>
-  <select id="difficulty-select">
-    <option value="Sværhedsgrad"> Sværhedsgrad</option>
-    <option value="Let">Let</option>
-    <option value="Middel">Middel</option>
-    <option value="difficult">Svær</option>
-  </select>
-</div>
+    <section class="filter-bar">  
+    <div class="filter-group">
+      <label for="difficulty-select"></label>
+      <select id="difficulty-select">
+        <option value="all">Sværhedsgrad</option>
+        <option value="Sværhedsgrad"> Sværhedsgrad</option>
+        <option value="Let">Let</option>
+        <option value="Mellem">Mellem</option>
+        <option value="Svær">Svær</option>
+      </select>
+    </div>
 
-<div class="filter-group">
-  <label for="age-select"></label>
-  <select id="age-select">
-    <option value="all">Alder</option>
-    <option value="6+">6+</option>
-    <option value="7+">7+</option>
-    <option value="8+">8+</option>
-    <option value="10+">10+</option>
-    <option value="18+">18+</option>
-  </select>
-</div>
+    <div class="filter-group">
+      <label for="age-select"></label>
+      <select id="age-select">
+        <option value="all">Alder</option>
+        <option value="6+">6+</option>
+        <option value="7+">7+</option>
+        <option value="8+">8+</option>
+        <option value="10+">10+</option>
+        <option value="18+">18+</option>
+      </select>
+    </div>
 
-<div class="filter-group">
-  <label for="genre-select"></label>
-  <select id="genre-select">
-  <option value="all">Genrer</option>
-  <option value="Party">Party</option>
-  <option value="Mysterie">Mysterie</option>
-  <option value="Børne-/Familie">Børne-/Familie</option>
-  <option value="Deck-builder">Deck-builder</option>
-  <option value="Quiz">Quiz</option>
-  <option value="Terning">Terning</option>
-  <option value="Kooperativt">Kooperativt</option>
-  <option value="Abstract">Abstract</option>
-  <option value="Ordspil">Ordspil</option>
-  <option value="Kortspil">Kortspil</option>
-  <option value="Strategi">Strategi</option>
-  <option value="Fliselægning">Fliselægning</option>
-  </select>
-  </div>
+    <div class="filter-group">
+      <label for="genre-select"></label>
+      <select id="genre-select">
+      <option value="all">Genrer</option>
+      <option value="Party">Party</option>
+      <option value="Mysterie">Mysterie</option>
+      <option value="Børne-/Familie">Børne-/Familie</option>
+      <option value="Deck-builder">Deck-builder</option>
+      <option value="Quiz">Quiz</option>
+      <option value="Terning">Terning</option>
+      <option value="Kooperativt">Kooperativt</option>
+      <option value="Abstract">Abstract</option>
+      <option value="Ordspil">Ordspil</option>
+      <option value="Kortspil">Kortspil</option>
+      <option value="Strategi">Strategi</option>
+      <option value="Fliselægning">Fliselægning</option>
+      </select>
+      </div>
 
-<div class="filter-group">
-  <label for="playtime-select"></label>
-  <select id="playtime-select">
-    <option value="all">Spilletid</option>
-    <option value="30+">30+ min</option>
-    <option value="60+">60+ min</option>
-    <option value="90+">90+ min</option>
-    <option value="120+">120+ min</option>
-  </select>
-</div>
-</div>
-</section>
+    <div class="filter-group">
+      <label for="playtime-select"></label>
+      <select id="playtime-select">
+        <option value="all">Spilletid</option>
+        <option value="15+">15+ min</option>
+        <option value="20+">20+ min</option>
+        <option value="30+">30+ min</option>
+        <option value="35+">35+ min</option>
+        <option value="40+">40+ min</option>
+        <option value="45+">45+ min</option>
+        <option value="60+">60+ min</option>
+        <option value="75+">75+ min</option>
+        <option value="120+">120+ min</option>
+      </select>
+    </div>
+    </div>
+    </section>
 
-    <main>
+    <main class="main-content">
 
       <!--Vestergade spil sektion-->
       <section class="location-section">
@@ -92,7 +95,7 @@
       <!--Alle spil sektion-->
       <section class="l-section">
         <h2>Alle Spil</h2>
-        <section class="game-list-all">
+        <section id="game-list-all">
         </section>
           <!-- Spilcards bliver indsat her via JS -->
 
@@ -105,7 +108,7 @@
                 <div class="rating-tag">9.1</div>
                 <div class="difficulty-tag">svær</div>
             </section>
-            <sec class="bottom-card">
+            <section class="bottom-card">
                 <h2 class="card-titel">Ticket to ride: world tour edition premium</h2>
                 <div class="tags">
                     <p>Kategori</p>
@@ -173,12 +176,6 @@
         </article>
       </section>
 
-=======
-      <!-- Movie grid -->
-      <section id="movie-list" class="movie-grid">
-        <!-- Film vil blive indsat her dynamisk -->
-      </section>
->>>>>>> 27cbeb8edf7952bd2831a2498684d90bd051a1a2
     </main>
 
     <!-- Footer -->
@@ -186,30 +183,14 @@
       <p>© Spilcaféen</p>
     </footer>
 
-<<<<<<< HEAD
     <!-- Game Detail Modal -->
     <dialog id="game-dialog">
       <form method="dialog">
         <button id="close-dialog" aria-label="Close">✕</button>
         <div id="dialog-content"></div>
-=======
-    <!-- Movie Detail Modal -->
-    <dialog id="movie-dialog">
-      <form method="dialog">
-        <button id="close-dialog" aria-label="Close">✕</button>
-        <div id="dialog-content">
-          <!-- Movie details will be injected here via JavaScript -->
-        </div>
->>>>>>> 27cbeb8edf7952bd2831a2498684d90bd051a1a2
       </form>
     </dialog>
 
-    <script src="app.js"></script>
-<<<<<<< HEAD
+    <script src="../js/app.js"></script>
   </body>
 </html>
-=======
-
-</body>
-</html>
->>>>>>> 27cbeb8edf7952bd2831a2498684d90bd051a1a2

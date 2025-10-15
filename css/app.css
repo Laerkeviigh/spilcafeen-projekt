@@ -13,7 +13,7 @@
   --rating-desciption-fontsize: 6px;
   --rating-card-fontsize: 12px;
   --spilgalleri-titel-fontsize: 20px;
-  --spilgalleri-header-2-fontsize: #;
+  --spilgalleri-header-2-fontsize: 17px;
 
   /* Color styles */
   --card-background-color: #fafafa;
@@ -78,7 +78,7 @@
 }
 
 /* Rating på billede */
-.rating-tag {
+.rating {
   display: inline-flex;
   padding: 4px 8px 4px 4px;
   justify-content: center;
@@ -90,14 +90,14 @@
   z-index: 20;
 }
 
-.rating-tag p {
+.rating p {
   font-family: var(--tag-font-family);
   font-size: var(--rating-card-fontsize);
   color: black;
 }
 
 /* Aldersgrænse på billede */
-.age-tag {
+.age {
   display: inline-flex;
   padding: 4px 12px 4px 8px;
   justify-content: flex-end;
@@ -108,7 +108,7 @@
   z-index: 20;
 }
 
-.age-tag p {
+.age p {
   font-family: var(--tag-font-family);
   font: var(--rating-card-fontsize);
   color: black;
@@ -182,17 +182,18 @@
 body {
   margin: 0;
   height: 100vh;
-  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: white;
   position: relative;
+  overflow: hidden;
 }
 
 /* Baggrundsbilledet */
 body::before {
   content: "";
+  min-height: 100vh;
   position: absolute;
   inset: 0;
   background-image: url("/img/forsidebaggrund.jpg");
@@ -243,30 +244,6 @@ footer {
 }
 
 /*LOCATIONSIDE*/
-
-body {
-  margin: 0;
-  height: 100vh;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: white;
-  position: relative;
-}
-
-/* Baggrundsbilledet */
-body::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: url("../img/forsidebaggrund.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  opacity: 0.2;
-  z-index: -1;
-}
 
 .location {
   position: relative;
@@ -356,7 +333,15 @@ footer {
   text-align: center;
 }
 
-.back-btn,
+.navbar .back-btn a {
+  list-style: none;
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: b;
+}
+
 .search-btn {
   background: none;
   border: none;
@@ -368,7 +353,7 @@ footer {
 .filter-bar {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   flex-wrap: wrap;
   padding: 12px 16px;
   gap: 8px;
@@ -381,10 +366,13 @@ footer {
   width: 100%;
   box-sizing: border-box;
   z-index: 999;
+  cursor: pointer;
 }
 
 .main-content {
-  padding-top: 140px;
+  padding-top: 120px;
+  padding-bottom: 80px;
+  min-height: 200vh;
 }
 
 .dropbtn {
@@ -396,14 +384,13 @@ footer {
   cursor: pointer;
 }
 
-.dropdown {
-  position: relative;
-}
-
 .filter-group select {
   background-color: #e9dfd7;
   border: none;
   appearance: none;
+  border-radius: 20px;
+  padding: 8px 30px 8px 12px;
+  font-size: 14px;
 }
 
 /* Show dropdown on click */
@@ -415,9 +402,8 @@ footer {
 
 /* --- CONTAINER --- */
 main {
-  max-width: 1200px;
-  margin: 60px auto;
-  padding: 40px 20px;
+  padding-top: 120px;
+  padding-bottom: 80px;
 }
 
 /* --- SEKTIONER --- */
@@ -431,31 +417,6 @@ main {
   font-weight: 700;
   color: #000;
   margin-bottom: 16px;
-}
-
-/* --- VESTERGADE (vandret scroll) --- */
-.game-scroll {
-  display: flex;
-  gap: 20px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding-bottom: 10px;
-  scrollbar-width: thin;
-  scrollbar-color: #ccc transparent;
-}
-
-.game-scroll::-webkit-scrollbar {
-  height: 6px;
-}
-.game-scroll::-webkit-scrollbar-thumb {
-  background-color: #ccc;
-  border-radius: 8px;
-}
-
-.game-scroll .game-card {
-  flex: 0 0 auto;
-  width: 220px;
-  scroll-snap-align: start;
 }
 
 /* "Se mere" knap */
@@ -566,4 +527,8 @@ main {
 .dialog-details .game-description {
   margin-top: 1rem;
   line-height: 1.6;
+}
+
+footer {
+  font-family: var(--paragraph-font-family);
 }

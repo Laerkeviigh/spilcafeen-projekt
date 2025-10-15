@@ -1,39 +1,51 @@
 "use strict";
 
-/*FORSIDE*/
+/* ==========================
+   INDEX (splash screen)
+   ========================== */
+if (document.querySelector(".splash-screen")) {
+  document.addEventListener("DOMContentLoaded", () => {
+    const logo = document.querySelector(".logo");
+    const splash = document.querySelector(".splash-screen");
 
-document.addEventListener("DOMContentLoaded", () => {
-  const logo = document.querySelector(".logo");
-  const splash = document.querySelector(".splash-screen");
+    // Logo-animation
+    setTimeout(() => logo.classList.add("animate"), 800);
 
-  // logo-animation efter kort delay
-  setTimeout(() => {
-    logo.classList.add("animate");
-  }, 800); // 0.8 sekunder efter load
+    // Fade ud efter 2.5 sekunder
+    setTimeout(() => splash.classList.add("fade-out"), 2500);
 
-  // fade splash-screen ud
-  setTimeout(() => {
-    splash.classList.add("fade-out");
-  }, 2500); // fade starter efter 2.5 sekunder
+    // Skift til location.html efter 3.5 sekunder
+    setTimeout(() => {
+      window.location.href = "./sites/location.html";
+    }, 3500);
+  });
+}
 
-  // skift til næste side (location.html)
-  setTimeout(() => {
-    window.location.href = "sites/location.html";
-  }, 3500);
+/* ==========================
+   LOCATION (fade in)
+   ========================== */
+
+if (document.querySelector(".location")) {
+  document.addEventListener("DOMContentLoaded", () => {
+    const locationSection = document.querySelector(".location");
+
+    // Fade ind
+    setTimeout(() => locationSection.classList.add("fade-in"), 100);
+  });
+}
+
+/* ==========================
+   SPILGALLERI (navbar, dialog osv.)
+   ========================== */
+
+if (document.querySelector(".spilgalleri-titel")) {
+  console.log("🎮 Spilgalleri loaded");
+}
+
+// Back button (sikker måde)
+document.querySelector(".back-btn").addEventListener("click", () => {
+  window.location.href = "../sites/location.html";
 });
-
-/*LOCATION*/
-
-document.addEventListener("DOMContentLoaded", () => {
-  const locationSection = document.querySelector(".location");
-
-  // Tilføj fade-in efter kort delay
-  setTimeout(() => {
-    locationSection.classList.add("fade-in");
-  }, 100);
-});
-
-/*SPILGALLERI*/
 
 // søg
 const searchInput = document.getElementById("search");
@@ -43,9 +55,7 @@ let allGames = [];
 
 // #2: Fetch games from JSON file
 async function getGames() {
-  const response = await fetch(
-    "https://raw.githubusercontent.com/cederdorff/race/refs/heads/master/data/movies.json"
-  );
+  const response = await fetch("../data/games.json");
   allGames = await response.json();
   console.log("📁 Games loaded:", allGames.length);
   populateCategoryDropdown(); // Udfyld dropdown med genrer fra data
@@ -54,7 +64,7 @@ async function getGames() {
 
 // #3: Display all games
 function displayGames(games) {
-  const gameList = document.querySelector("#game-list-all");
+  const gameList = document.querySelector(".game-list-all");
   gameList.innerHTML = "";
 
   if (games.length === 0) {
@@ -69,21 +79,21 @@ function displayGames(games) {
 }
 
 // #4: Render a single game card and add event listeners
-function displayGames(games) {
-  const gameList = document.querySelector("#game-list-all");
+function displayGame(game) {
+  const gameList = document.querySelector(".game-list-all");
 
   const gameHTML = `
     <article class="game-card" tabindex="0">
         <section class="top-card">
-            <img src="${games.image}" 
-            alt="${games.title}" 
+            <img src="${game.image}" 
+            alt="${game.title}" 
             class="game-image" />
-            <div class="age-tag">${games.age}</div>
-            <div class="rating-tag">${games.rating}</div>
-            <div class="difficulty-tag">${games.difficulty}</div>
+            <div class="age-tag">${game.age}+</div>
+            <div class="rating-tag">${game.rating}</div>
+            <div class="difficulty-tag">${game.difficulty}</div>
         </section>
         <sec class="bottom-card">
-            <h2 class="card-titel">${games.title}</h2>
+            <h2 class="card-titel">${game.title}</h2>
             <div class="tags">
                 <p>${game.genre}</p>
             </div>
@@ -99,15 +109,31 @@ function displayGames(games) {
         </section>
     </article>
   `;
-  gameList.insertAdjacentHTML("beforeend", gameHTML);
+}
 
-<<<<<<< HEAD
+gameList.insertAdjacentHTML("beforeend", gameHTML);
+
+{
   // Tilføj click event til den nye card
   const newCard = gameList.lastElementChild;
   newCard.addEventListener("click", function () {
     console.log(`Klik på: "${game.title}"`);
-    showGameModal(game); // ÆNDRET: Fra showGameDetails til showGameModal
+    showGameModal(game.id); // ÆNDRET: Fra showGameDetails til showGameModal
   });
+}
+
+// #6: Vis game details (Session 3 version - bliver erstattet med modal i Del 2)
+function showGameDetails(game) {
+  alert(`
+🎬 ${games.title} (${game.year})
+
+🎭 Genre: ${game.genre.join(", ")}
+⭐ Rating: ${game.rating}
+🎥 Director: ${game.director}
+👥 Actors: ${game.actors.join(", ")}
+
+📝 ${game.description}
+  `);
 }
 
 //Game Card Dialog
@@ -115,18 +141,18 @@ function showGameModal(id) {
   const game = allGames.find((g) => g.id == id);
 
   document.querySelector("#dialog-content").innerHTML = /*html*/ `
-    <img src="${game.image}" alt="${game.title}" class="movie-poster" />
+    <img src="${game.image}" alt="${game.title}" class="game-image" />
     <div class="dialog-details">
       <h2>${game.title}</h2>
-      <p class="movie-genre">${game.genre}</p>
-      <p class="movie-rating">☆ ${game.rating}</p>
+      <p class="game-category">${game.genre}</p>
+      <p class="game-rating">☆ ${game.rating}</p>
       <p><strong>Spilletid:</strong> ${game.playtime} min</p>
       <p><strong>Spillere:</strong> ${game.players.min}-${game.players.max}</p>
       <p><strong>Alder:</strong> ${game.age}+</p>
       <p><strong>Sværhedsgrad:</strong> ${game.difficulty}</p>
       <p><strong>Sprog:</strong> ${game.language}</p>
       <p><strong>Placering:</strong> ${game.location}, hylde ${game.shelf}</p>
-      <p class="movie-description">${game.rules}</p>
+      <p class="game-description">${game.rules}</p>
     </div>
   `;
 
@@ -138,99 +164,4 @@ document.querySelector("#close-dialog").addEventListener("click", () => {
   document.querySelector("#game-dialog").close();
 });
 
-/*Vestergade sektion*/
-
-// Indlæs spil fra JSON og filtrér Vestergade-spil
-async function loadVestergadeGames() {
-  try {
-    const response = await fetch("../data/games.json");
-    const games = await response.json();
-
-    const vestergadeGames = games.filter(
-      (game) => game.location === "Vestergade"
-    );
-
-    renderVestergadeGames(vestergadeGames);
-  } catch (error) {
-    console.error("Fejl ved indlæsning af spil:", error);
-  }
-}
-
-// Render kortene
-function renderVestergadeGames(games) {
-  const container = document.getElementById("vestergade-list");
-
-  games.forEach((game) => {
-    const card = document.createElement("article");
-    card.classList.add("game-card");
-
-    card.innerHTML = `
-      <section class="top-card">
-        <img src="${game.image}" alt="${game.title}" class="game-image" />
-        <div class="age-tag"><p>${game.age}+</p></div>
-        <div class="difficulty"><p>${game.difficulty}</p></div>
-      </section>
-      <section class="bottom-card">
-        <h3>${game.title}</h3>
-        <div class="tags"><p>${game.genre}</p></div>
-        <div class="tags"><p>${game.playtime} min</p></div>
-        <div class="tags"><p>${game.players.min}-${game.players.max} personer</p></div>
-        <div class="tags"><p>${game.language}</p></div>
-      </section>
-    `;
-
-    container.insertBefore(card, container.querySelector(".see-more"));
-  });
-}
-
-// Kør funktionen når DOM’en er klar
-document.addEventListener("DOMContentLoaded", loadVestergadeGames);
-
-// Render ALLE spil i vertikal liste
-function renderAllGames(games) {
-  const container = document.getElementById("all-games-list");
-
-  games.forEach((game) => {
-    const card = document.createElement("article");
-    card.classList.add("game-card");
-
-    card.innerHTML = `
-      <section class="top-card">
-        <img src="${game.image}" alt="${game.title}" class="game-image" />
-        <div class="age-tag"><p>${game.age}+</p></div>
-        <div class="difficulty"><p>${game.difficulty}</p></div>
-      </section>
-      <section class="bottom-card">
-        <h3>${game.title}</h3>
-        <div class="tags"><p>${game.genre}</p></div>
-        <div class="tags"><p>${game.playtime} min</p></div>
-        <div class="tags"><p>${game.players.min}-${game.players.max} personer</p></div>
-        <div class="tags"><p>${game.language}</p></div>
-      </section>
-    `;
-
-    container.appendChild(card);
-  });
-}
-
-// Når siden er klar, kør begge
-document.addEventListener("DOMContentLoaded", () => {
-  loadVestergadeGames();
-  loadAllGames();
-});
-
 // Dropdown-menu //// Åbn/luk dropdowns
-=======
-    // Tilføj click event til den nye card
-    const newCard = gameList.lastElementChild;
-    newCard.addEventListener("click", function () {
-        console.log(`Klik på: "${game.title}"`);
-        showGameModal(game); // ÆNDRET: Fra showGameDetails til showGameModal
-    });
-    }
-
-
-    
-
-
->>>>>>> 27cbeb8edf7952bd2831a2498684d90bd051a1a2
