@@ -159,6 +159,50 @@ function showGameModal(id) {
   document.querySelector("#game-dialog").showModal();
 }
 
+<article class="dialog-container">
+  <div class="dialog-image-container">
+    <img src=".../img/tilbageknap.png" class="go-back"></img>
+    <div class="age">
+      <p>${game.age}</p>
+    </div>
+    <img src="${game.imgage}" alt="${game.title}" class="dialog-image"></img>
+  </div>
+  <div class="dialog-description-container">
+    <h2 class="dialog-header"></h2>
+    <div class="dialog-tag-container">
+      <div class="tags">
+        <p>
+          ${game.players.min}-${game.players.max}
+        </p>
+      </div>
+      <div class="tags">
+        <p>${game.genre}</p>
+      </div>
+      <div class="tags">
+        <p>${game.playtime}</p>
+      </div>
+      <div class="tags">
+        <p>${game.language}</p>
+      </div>
+    </div>
+    <p class="dialog-description">
+      ${game.desciption}" "${game.rules}
+    </p>
+    <div class="dialog-bottom-container">
+      <div class="difficulty-big-tag">
+        <p>${game.difficulty}</p>
+      </div>
+      <div class="shelf-big-tag">
+        <p>
+          hylde: <strong>${game.shelf}</strong>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="dialog-user-rating"></div>
+  <div class="dialog-might-like"></div>
+</article>;
+
 // Luk dialog på klik af X
 document.querySelector("#close-dialog").addEventListener("click", () => {
   document.querySelector("#game-dialog").close();
