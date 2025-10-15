@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 
 /*FORSIDE*/
 
@@ -19,9 +19,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // skift til næste side (location.html)
   setTimeout(() => {
     window.location.href = "sites/location.html";
-  }, 3500); 
+  }, 3500);
 });
-
 
 /*LOCATION*/
 
@@ -31,18 +30,16 @@ document.addEventListener("DOMContentLoaded", () => {
   // Tilføj fade-in efter kort delay
   setTimeout(() => {
     locationSection.classList.add("fade-in");
-  }, 100); 
+  }, 100);
 });
-
-
 
 /*SPILGALLERI*/
 
-  // søg
-  const searchInput = document.getElementById('search');
-  searchInput.addEventListener('input', () => renderCards(currentGames));
+// søg
+const searchInput = document.getElementById("search");
+searchInput.addEventListener("input", () => renderCards(currentGames));
 
-let allGames = []
+let allGames = [];
 
 // #2: Fetch games from JSON file
 async function getGames() {
@@ -71,8 +68,8 @@ function displayGames(games) {
   }
 }
 
-  // #4: Render a single game card and add event listeners
-  function displayGames(games) {
+// #4: Render a single game card and add event listeners
+function displayGames(games) {
   const gameList = document.querySelector("#game-list");
 
   const gameHTML = `
@@ -94,7 +91,7 @@ function displayGames(games) {
                 <p>${game.playtime}</p>
             </div>
             <div class="tags">
-                <p>${game.players}</p>
+                <p>${game.players.min}-${game.players.max}</p>
             </div>
             <div class="tags">
                 <p>${game.language}</p>
@@ -102,12 +99,127 @@ function displayGames(games) {
         </section>
     </article>
   `;
-    gameList.insertAdjacentHTML("beforeend", gameHTML);
+  gameList.insertAdjacentHTML("beforeend", gameHTML);
 
-    // Tilføj click event til den nye card
-    const newCard = gameList.lastElementChild;
-    newCard.addEventListener("click", function () {
-        console.log(`Klik på: "${game.title}"`);
-        showGameModal(game); // ÆNDRET: Fra showGameDetails til showGameModal
-    });
-    }
+  // Tilføj click event til den nye card
+  const newCard = gameList.lastElementChild;
+  newCard.addEventListener("click", function () {
+    console.log(`Klik på: "${game.title}"`);
+    showGameModal(game); // ÆNDRET: Fra showGameDetails til showGameModal
+  });
+}
+
+//Game Card Dialog
+
+function showGameCard(game) {
+  // Find modal indhold container og byg HTML struktur dynamisk
+  document.querySelector("#dialog-content").innerHTML = /*html*/ `
+    <img src="${game.image}" alt="Poster af ${game.title}" class="movie-poster">
+    <div class="dialog-details">
+    <h2>${game.title}</h2>
+      <div class="tags"><p>${game.genre}</p></div>
+      <div class="tags"><p>${game.playtime} min</p></div>
+      <div><p</div>
+      <div class="tags"><p>${game.rating}</p></div>
+    
+      <p class="tags">${game.description}</p>
+    </div>
+  `;
+}
+
+// Åbn modalen - showModal() er en built-in browser funktion
+document.querySelector("#gamecard-dialog").showModal();
+
+/*Vestergade sektion*/
+
+// Indlæs spil fra JSON og filtrér Vestergade-spil
+async function loadVestergadeGames() {
+  try {
+    const response = await fetch("../data/games.json");
+    const games = await response.json();
+
+    const vestergadeGames = games.filter(
+      (game) => game.location === "Vestergade"
+    );
+
+    renderVestergadeGames(vestergadeGames);
+  } catch (error) {
+    console.error("Fejl ved indlæsning af spil:", error);
+  }
+}
+
+// Render kortene
+function renderVestergadeGames(games) {
+  const container = document.getElementById("vestergade-list");
+
+  games.forEach((game) => {
+    const card = document.createElement("article");
+    card.classList.add("game-card");
+
+    card.innerHTML = `
+      <section class="top-card">
+        <img src="${game.image}" alt="${game.title}" class="game-image" />
+        <div class="age-tag"><p>${game.age}+</p></div>
+        <div class="difficulty"><p>${game.difficulty}</p></div>
+      </section>
+      <section class="bottom-card">
+        <h3>${game.title}</h3>
+        <div class="tags"><p>${game.genre}</p></div>
+        <div class="tags"><p>${game.playtime} min</p></div>
+        <div class="tags"><p>${game.players.min}-${game.players.max} personer</p></div>
+        <div class="tags"><p>${game.language}</p></div>
+      </section>
+    `;
+
+    container.insertBefore(card, container.querySelector(".see-more"));
+  });
+}
+
+// Kør funktionen når DOM’en er klar
+document.addEventListener("DOMContentLoaded", loadVestergadeGames);
+
+//Alle spil sektion//
+
+async function loadAllGames() {
+  try {
+    const response = await fetch("../data/games.json");
+    const games = await response.json();
+
+    renderAllGames(games);
+  } catch (error) {
+    console.error("Fejl ved indlæsning af alle spil:", error);
+  }
+}
+
+// Render ALLE spil i vertikal liste
+function renderAllGames(games) {
+  const container = document.getElementById("all-games-list");
+
+  games.forEach((game) => {
+    const card = document.createElement("article");
+    card.classList.add("game-card");
+
+    card.innerHTML = `
+      <section class="top-card">
+        <img src="${game.image}" alt="${game.title}" class="game-image" />
+        <div class="age-tag"><p>${game.age}+</p></div>
+        <div class="difficulty"><p>${game.difficulty}</p></div>
+      </section>
+      <section class="bottom-card">
+        <h3>${game.title}</h3>
+        <div class="tags"><p>${game.genre}</p></div>
+        <div class="tags"><p>${game.playtime} min</p></div>
+        <div class="tags"><p>${game.players.min}-${game.players.max} personer</p></div>
+        <div class="tags"><p>${game.language}</p></div>
+      </section>
+    `;
+
+    container.appendChild(card);
+  });
+}
+
+// Når siden er klar, kør begge
+document.addEventListener("DOMContentLoaded", () => {
+  loadVestergadeGames();
+  loadAllGames();
+});

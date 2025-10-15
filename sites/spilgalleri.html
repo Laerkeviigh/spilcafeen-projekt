@@ -1,11 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/app.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
     <title>Spilgalleri</title>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body>
+    <header class="navbar">
+      <button class="back-btn">←</button>
+      <h1 class="spilgalleri-titel">Spilgalleri</h1>
+      <button class="search-btn"><input type="text" placeholder="SØG...">🔍</button>
+      <input type="text" placeholder="SØG...">
+      
+    </header>
+
+    <nav class="filter-bar">
+      <div class="dropdown">
+        <button class="dropbtn" data-filter="spilletid">Spilletid ▾</button>
+        <div class="dropdown-content">
+          <label><input type="checkbox" value="30+" /> 30+</label>
+          <label><input type="checkbox" value="60+" /> 60+</label>
+          <label><input type="checkbox" value="90+" /> 90+</label>
+          <label><input type="checkbox" value="120+" /> 120+</label>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="dropbtn" data-filter="genre">Genre ▾</button>
+        <div class="dropdown-content">
+          <label><input type="checkbox" value="party" />Party</label>
+          <label><input type="checkbox" value="mysterie" />Mysterie</label>
+          <label><input type="checkbox" value="familie" />Børne-/familie</label>
+          <label
+            ><input type="checkbox" value="deck-builder" />Deck-builder</label
+          >
+          <label><input type="checkbox" value="quiz" />Quiz</label>
+          <label><input type="checkbox" value="terning" />Terning</label>
+          <label
+            ><input type="checkbox" value="kooperativt" />Kooperativt</label
+          >
+          <label><input type="checkbox" value="abstract" />Abstract</label>
+          <label><input type="checkbox" value="ordspil" />Ordspil</label>
+          <label><input type="checkbox" value="kortspil" />Kortspil</label>
+          <label><input type="checkbox" value="strategi" />Strategi</label>
+          <label
+            ><input type="checkbox" value="fliselægning" />Fliselægning</label
+          >
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="dropbtn" data-filter="alder">Alder ▾</button>
+        <div class="dropdown-content">
+          <label><input type="checkbox" value="6+" /> 6+</label>
+          <label><input type="checkbox" value="7+" /> 7+</label>
+          <label><input type="checkbox" value="8+" /> 8+</label>
+          <label><input type="checkbox" value="10+" /> 10+</label>
+          <label><input type="checkbox" value="18+" /> 18+</label>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="dropbtn" data-filter="svaerhedsgrad">
+          Sværhedsgrad ▾
+        </button>
+        <div class="dropdown-content">
+          <label><input type="checkbox" value="let" /> Let</label>
+          <label><input type="checkbox" value="middel" /> Middel</label>
+          <label><input type="checkbox" value="svær" /> Svær</label>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <div class="tags">strategi</div>
+
+      <!--Vestergade spil sektion-->
+      <section class="location-section">
+        <h2>Vestergade</h2>
+        <div class="game-scroll" id="vestergade-list">
+          <!-- Spilcards bliver indsat her via JS -->
+          <button class="see-more">Se mere →</button>
+        </div>
+      </section>
+
+      <!--Alle spil sektion-->
+      <section class="location-section">
+        <h2>Alle Spil</h2>
+        <div class="game-list" id="all-games-list">
+          <!-- Spilcards bliver indsat her via JS -->
+           <article class="game-card" tabindex="0">
+            <section class="top-card">
+                <img src="https://upload.wikimedia.org/wikipedia/en/0/0b/Barbie_2023_poster.jpg" 
+                alt="spil titel" 
+                class="game-image" />
+                <div class="age-tag">6+</div>
+                <div class="rating-tag">9.1</div>
+                <div class="difficulty-tag">svær</div>
+            </section>
+            <sec class="bottom-card">
+                <h2>stratego</h2>
+                <div class="tags">
+                    <p>strategi</p>
+                </div>
+                <div class="tags">
+                    <p>100min</p>
+                </div>
+                <div class="tags">
+                    <p>2-2</p>
+                </div>
+                <div class="tags">
+                    <p>engelsk</p>
+                </div>
+            </section>
+        </article>
+        </div>
+      </section>
+
+      <!-- Game grid -->
+      <section id="game-list" class="game-grid">
+        <!-- Spil vil blive indsat her dynamisk -->
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <p>© Spilcaféen</p>
+    </footer>
+
+    <!-- Game Detail Modal -->
+    <dialog id="gamecard-dialog">
+      <form method="dialog">
+        <button id="close-dialog" aria-label="Close">✕</button>
+        <div id="dialog-content">
+          <!-- Game details will be injected here via JavaScript -->
+        </div>
+      </form>
+    </dialog>
+
+    <script src="app.js"></script>
+  </body>
 </html>

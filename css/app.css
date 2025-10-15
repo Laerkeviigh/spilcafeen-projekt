@@ -1,8 +1,8 @@
 :root {
   /* Text styles */
-  --header-font-family: 'poppins';
-  --paragraph-font-family: 'montserrat';
-  --tag-font-family: 'roboto mono';
+  --header-font-family: "poppins";
+  --paragraph-font-family: "montserrat";
+  --tag-font-family: "roboto mono";
   --card-fontsize-header-1: 14px;
   --description-fontsize-header-1: 32px;
   --description-fontsize-header-2: 16px;
@@ -11,84 +11,118 @@
   --tag-fontsize: 10px;
   --rating-desciption-fontsize: 6px;
   --rating-card-fontsize: 12px;
+  --spilgalleri-titel-fontsize: 20px;
+  --spilgalleri-header-2-fontsize: #;
 
   /* Color styles */
   --card-background-color: #fafafa;
   --tag-background-color: #f8f8f8;
   --tag-border-color: #e0e0e0;
-  --rating-yellow-gradient: linear-gradient(to bottom, #e6cd53 16%, #ffe35a 51%, #e6cd53 88%);
-
+  --rating-yellow-gradient: linear-gradient(
+    to bottom,
+    #e6cd53 16%,
+    #ffe35a 51%,
+    #e6cd53 88%
+  );
 
   /* effect styles */
   --shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.05);
   --transition: 250ms ease;
 }
 
+.spilgalleri-titel {
+  font-family: var(--header-font-family);
+  font-size: var(--spilgalleri-titel-fontsize);
+}
 
 /* Card in general */
 /* Card */
 .game-card {
   display: flex;
-flex-direction: column;
-align-items: flex-start;
-border-radius: 16px;
-background: var(--card-background-color);
-box-shadow: var(--shadow);
+  flex-direction: column;
+  align-items: flex-start;
+  border-radius: 16px;
+  background: var(--card-background-color);
+  box-shadow: var(--shadow);
 }
 
 /* Tags */
 .tags {
   display: flex;
-padding: 4px 8px;
-justify-content: center;
-align-items: center;
-gap: 4px;
-border-radius: 16px;
-border: 0.5px solid var(--tag-border-color);
-background: var(--tag-background-color);
-box-shadow: var(--shadow);
+  padding: 4px 8px;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  border-radius: 16px;
+  border: 0.5px solid var(--tag-border-color);
+  background: var(--tag-background-color);
+  box-shadow: var(--shadow);
+}
+
+.tags p {
+  font-family: var(--tag-font-family);
+  font-size: var(--tag-fontsize);
+  color: black;
 }
 
 /* Øvre card */
 .top-card {
-width: 160px;
-height: 160px;
-border-radius: 16px 16px 0 0;
+  width: 160px;
+  height: 160px;
+  border-radius: 16px 16px 0 0;
 }
 
 /* Rating på billede */
 .rating-tag {
-display: inline-flex;
-padding: 4px 8px 4px 4px;
-justify-content: center;
-align-items: center;
-gap: 4px;
-border-radius: 0 16px 16px 0;
-background: var(--rating-yellow-gradient);
-box-shadow: var(--shadow);
+  display: inline-flex;
+  padding: 4px 8px 4px 4px;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  border-radius: 0 16px 16px 0;
+  background: var(--rating-yellow-gradient);
+  box-shadow: var(--shadow);
+}
+
+.rating-tag p {
+  font-family: var(--tag-font-family);
+  font-size: var(--rating-card-fontsize);
+  color: black;
 }
 
 /* Aldersgrænse på billede */
 .age-tag {
   display: inline-flex;
-padding: 4px 12px 4px 8px;
-justify-content: flex-end;
-align-items: flex-start;
-gap: 8px;
-border-radius: 16px 0 0 16px;
-background: var(--card-background-color);
+  padding: 4px 12px 4px 8px;
+  justify-content: flex-end;
+  align-items: flex-start;
+  gap: 8px;
+  border-radius: 16px 0 0 16px;
+  background: var(--card-background-color);
+}
+
+.age-tag p {
+  font-family: var(--tag-font-family);
+  font: var(--rating-card-fontsize);
+  color: black;
 }
 
 /* Sværhedsgrad på billede */
 .difficulty {
   display: inline-flex;
-padding: 4px 8px 4px 4px;
-justify-content: center;
-align-items: center;
-gap: 4px;
-border-radius: 0 16px 16px 0;
-background: var(--card-background-color);
-box-shadow: var(--shadow);
+  padding: 4px 8px 4px 4px;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  border-radius: 0 16px 16px 0;
+  background: var(--card-background-color);
+  box-shadow: var(--shadow);
+}
+
+.difficulty p {
+  font-family: var(--tag-font-family);
+  font: var(--rating-card-fontsize);
+  color: black;
 }
 
 /* Billede af brætspil */
@@ -102,34 +136,32 @@ box-shadow: var(--shadow);
 /* Nedre card */
 .bottom-card {
   display: flex;
-width: 160px;
-padding: 4px 8px 8px 8px;
-flex-direction: column;
-align-items: flex-start;
-gap: 4px;
-background: var(--card-background-color);
+  width: 160px;
+  padding: 4px 8px 8px 8px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  background: var(--card-background-color);
 }
 
 .card-titel {
-display: flex;
-flex-direction: column;
-align-items: flex-start;
-align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: stretch;
 }
 
 .tags {
-display: flex;
-padding: 4px 8px;
-justify-content: center;
-align-items: center;
-gap: 4px;
-border-radius: 16px;
-border: 0.5px solid var(--tag-border-color);
-background: var(--card-background-color);
-box-shadow: var(--shadow);
+  display: flex;
+  padding: 4px 8px;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  border-radius: 16px;
+  border: 0.5px solid var(--tag-border-color);
+  background: var(--card-background-color);
+  box-shadow: var(--shadow);
 }
-
-
 
 /* FORSIDE */
 
@@ -153,13 +185,13 @@ body::before {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  opacity: 0.2; 
+  opacity: 0.2;
   z-index: 0;
 }
 
 .splash-screen {
   position: relative;
-  z-index: 1; 
+  z-index: 1;
   width: 100%;
   height: 100%;
   display: flex;
@@ -181,25 +213,22 @@ body::before {
   opacity: 1;
 }
 
-
 .splash-screen.fade-out {
   opacity: 0;
 }
 
-
 footer {
-    position: fixed;       /* Footer fastlåses i forhold til viewport */
-    bottom: 0;             /* Lige ved bunden */
-    left: 50%;             /* Flytter venstre kant til midten */
-    transform: translateX(-50%); /* Center footer horisontalt */
-    color: black;           /* Tekstfarve */
-    padding: 10px 20px;    /* Indvendig margin */
-    text-align: center;    /* Tekst centreret */
-    font-size: 14px;       /* Valgfri størrelse */
+  position: fixed; /* Footer fastlåses i forhold til viewport */
+  bottom: 0; /* Lige ved bunden */
+  left: 50%; /* Flytter venstre kant til midten */
+  transform: translateX(-50%); /* Center footer horisontalt */
+  color: black; /* Tekstfarve */
+  padding: 10px 20px; /* Indvendig margin */
+  text-align: center; /* Tekst centreret */
+  font-size: 14px; /* Valgfri størrelse */
 }
 
-
-/*LOCATION*/
+/*LOCATIONSIDE*/
 
 body {
   margin: 0;
@@ -222,24 +251,22 @@ body::before {
   background-position: center;
   background-repeat: no-repeat;
   opacity: 0.2;
-  z-index: 0; 
+  z-index: 0;
 }
 
 .location {
   position: relative;
-  z-index: 1; 
+  z-index: 1;
 }
-
 
 .location h2 {
-    color: #000;
-    text-align: center;
-    font-family: 'Poppins', sans-serif;
-    font-size: 26px;
-    font-weight: 700;
-    margin-bottom: 20px;
+  color: #000;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 20px;
 }
-
 
 .button-container {
   display: flex;
@@ -254,14 +281,14 @@ body::before {
   align-items: center;
   width: 300px;
   height: 80px;
-  background: #EBDFD7;
+  background: #ebdfd7;
   color: #000;
   font-size: 36px;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 400;
   text-decoration: none;
   border-radius: 15px;
-  box-shadow: 0 2px 2px rgba(0,0,0,0.25);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
   cursor: pointer;
   transition: background 0.2s, transform 0.2s;
 }
@@ -271,30 +298,314 @@ body::before {
   transform: translateY(-2px);
 }
 
-
 footer {
-    position: fixed;      
-    bottom: 0;             
-    left: 50%;            
-    transform: translateX(-50%); 
-    color: black;          
-    padding: 10px 20px;   
-    text-align: center;   
-    font-size: 14px;       
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  color: black;
+  padding: 10px 20px;
+  text-align: center;
+  font-size: 14px;
 }
-
-
 
 /* fade-ind effekt */
 .location {
-  opacity: 0;                 /* starter skjult */
+  opacity: 0; /* starter skjult */
   transition: opacity 1s ease, transform 1s ease;
 }
 
 .location.fade-in {
-  opacity: 1;                 /* bliver synlig */
+  opacity: 1; /* bliver synlig */
 }
 
+/*SPILGALLERISIDE*/
+/*Navbar*/
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  border-bottom: 1px solid #eee;
+}
 
+.title {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
 
-/*SPILGALLERI*/
+.back-btn,
+.search-btn {
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+/* Filter bar */
+.filter-bar {
+  display: flex;
+  gap: 8px;
+  padding: 12px 16px;
+  flex-wrap: wrap;
+}
+
+.dropbtn {
+  background-color: #e9dfd7;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  min-width: 140px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 8px 12px;
+  text-decoration: none;
+  color: #000;
+}
+
+.dropdown-content a:hover {
+  background-color: #f0f0f0;
+}
+
+/* Show dropdown on click */
+.show {
+  display: block;
+}
+
+/* Sektion til Vestergadespil */
+.location-section {
+  margin: 20px;
+  position: relative;
+}
+
+.location-section h2 {
+  font-family: var(--header-font-family);
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #000;
+}
+
+/* Horisontal scroll i Vestergade sektion */
+.game-scroll {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 10px;
+  scrollbar-width: thin;
+  scrollbar-color: #ccc transparent;
+}
+
+.game-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+.game-scroll::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 8px;
+}
+
+/* Kortene */
+.game-card {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+}
+
+/* "Se mere" knap */
+.see-more {
+  flex: 0 0 auto;
+  align-self: center;
+  background: #ebdfd7;
+  border: none;
+  border-radius: 16px;
+  padding: 8px 16px;
+  font-family: var(--header-font-family);
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: background var(--transition);
+}
+
+.see-more:hover {
+  background: #d8cfc3;
+}
+
+/*Alle spil sektion*/
+
+.game-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 16px;
+  overflow-y: auto;
+  max-height: 70vh;
+  padding-right: 8px;
+  scrollbar-width: thin;
+  scrollbar-color: #ccc transparent;
+}
+
+.game-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.game-list::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 8px;
+}
+
+/*Dialog Game Card*/
+
+dialog#game-dialog {
+  border: none;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  padding: 0;
+  max-width: min(95vw, 1000px);
+  max-height: 90vh;
+  background: var(--bg-card);
+  color: var(--text);
+  overflow: hidden;
+  position: relative;
+  margin: auto;
+}
+
+dialog#game-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+}
+
+#close-dialog {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--text-light);
+  border: none;
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 1.25rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+  z-index: 10;
+}
+
+#close-dialog:hover {
+  background: var(--error);
+  color: white;
+  transform: scale(1.1);
+}
+
+#dialog-content {
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: minmax(250px, 1fr) 2fr;
+  gap: 2rem;
+  align-items: start;
+  overflow-y: auto;
+  max-height: 90vh;
+}
+
+@media (max-width: 768px) {
+  #dialog-content {
+    grid-template-columns: 1fr;
+    padding: 1.5rem;
+    gap: 1.5rem;
+    text-align: center;
+  }
+}
+
+#dialog-content img.game-card {
+  width: 100%;
+  height: auto;
+  max-height: 500px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+@media (max-width: 768px) {
+  #dialog-content img.game-card {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+}
+
+.dialog-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+#dialog-content h2 {
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.2;
+  margin: 0 0 1rem 0;
+}
+
+#dialog-content p {
+  color: var(--text-light);
+  line-height: 1.6;
+  margin: 0 0 1rem 0;
+}
+
+#dialog-content p strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+#dialog-content .game-genre {
+  color: var(--secondary);
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+#dialog-content .game-rating {
+  color: var(--warning);
+  font-weight: 600;
+  font-size: 1.125rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  #dialog-content .game-rating {
+    justify-content: center;
+  }
+}
+
+.game-description {
+  color: var(--text) !important;
+  font-size: 1.1rem !important;
+  line-height: 1.7 !important;
+  margin-top: 1rem !important;
+  padding: 1rem;
+  background: var(--secondary-light);
+  border-radius: var(--radius);
+  border-left: 4px solid var(--secondary);
+  font-style: italic;
+}
