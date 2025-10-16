@@ -1,16 +1,15 @@
-/* this is updated :))) */
 :root {
   /* Text styles */
-  --header-font-family: "poppins";
-  --paragraph-font-family: "montserrat";
-  --tag-font-family: "roboto mono";
+  --header-font-family: "Poppins", sans-serif;
+  --paragraph-font-family: "Montserrat", sans-serif;
+  --tag-font-family: "Roboto Mono", monospace;
   --card-fontsize-header-1: 14px;
   --description-fontsize-header-1: 32px;
   --description-fontsize-header-2: 16px;
   --description-fontsize-header-3: 12px;
   --description-fontsize-paragraph: 16px;
   --tag-fontsize: 10px;
-  --rating-desciption-fontsize: 6px;
+  --rating-description-fontsize: 6px;
   --rating-card-fontsize: 12px;
   --spilgalleri-titel-fontsize: 20px;
   --spilgalleri-header-2-fontsize: 17px;
@@ -36,8 +35,7 @@
   font-size: var(--spilgalleri-titel-fontsize);
 }
 
-/* Card in general */
-/* Card */
+/* === CARD === */
 .game-card {
   display: inline-flex;
   flex-direction: column;
@@ -51,9 +49,11 @@
 
 /* Tags */
 .tags {
-  padding: 8px 4px;
+  display: flex;
+  padding: 4px 8px;
   justify-content: center;
   align-items: center;
+  gap: 4px;
   border-radius: 16px;
   border: 0.5px solid var(--tag-border-color);
   background: var(--tag-background-color);
@@ -64,7 +64,6 @@
 .tags p {
   font-family: var(--tag-font-family);
   font-size: var(--tag-fontsize);
-  font-style: normal;
   font-weight: 700;
   line-height: 15px;
   letter-spacing: -0.11px;
@@ -110,7 +109,7 @@
 
 .age p {
   font-family: var(--tag-font-family);
-  font: var(--rating-card-fontsize);
+  font-size: var(--rating-card-fontsize);
   color: black;
 }
 
@@ -129,7 +128,7 @@
 
 .difficulty p {
   font-family: var(--tag-font-family);
-  font: var(--rating-card-fontsize);
+  font-size: var(--rating-card-fontsize);
   color: black;
 }
 
@@ -188,7 +187,6 @@ body {
   background-color: white;
   position: relative;
   overflow: hidden;
-  padding-top: 0px;
 }
 
 /* Baggrundsbilledet */
@@ -233,17 +231,18 @@ body::before {
   opacity: 0;
 }
 
+/* --- FOOTER --- */
 footer {
-  position: fixed; /* Footer fastlåses i forhold til viewport */
-  bottom: 0; /* Lige ved bunden */
-  left: 50%; /* Flytter venstre kant til midten */
-  transform: translateX(-50%); /* Center footer horisontalt */
-  color: black; /* Tekstfarve */
-  padding: 10px 20px; /* Indvendig margin */
-  text-align: center; /* Tekst centreret */
-  font-size: 14px; /* Valgfri størrelse */
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  color: black;
+  padding: 10px 20px;
+  text-align: center;
+  font-size: 14px;
+  font-family: var(--paragraph-font-family);
 }
-
 
 /*LOCATIONSIDE*/
 .location {
@@ -333,9 +332,7 @@ footer {
   font-weight: 700;
   text-align: center;
 }
-
-.navbar .back-btn a {
-  list-style: none;
+h .navbar .back-btn a {
   text-decoration: none;
   background: none;
   border: none;
@@ -399,13 +396,15 @@ footer {
 
 /*Vestergade & alle spil sektion*/
 .vestergade {
+  display: flex;
   flex-direction: row;
 }
 
 /* --- CONTAINER --- */
 main {
-  padding-top: 120px;
-  padding-bottom: 80px;
+  max-width: min(1400px, 95vw);
+  margin: 0 auto;
+  padding: clamp(5rem, 10vw, 8rem) 1rem 2rem;
 }
 
 /* --- SEKTIONER --- */
@@ -415,7 +414,6 @@ main {
   display: flex;
   justify-content: space-between;
   text-align: center;
-  
 }
 
 .location-section h2 {
@@ -430,10 +428,9 @@ main {
   display: flex;
   margin-bottom: 10px;
   padding-top: 8px;
-  justify-content: space-between;
-  text-align: center;
 }
 
+.location-section h2,
 .l-section h2 {
   font-family: var(--header-font-family);
   font-size: 28px;
@@ -458,7 +455,7 @@ main {
 }
 
 /* --- ALLE SPIL (grid) --- */
-.game-list-all {
+#game-list-all {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   gap: 16px;
@@ -474,45 +471,44 @@ main {
 }
 
 /* --- RESPONSIVE --- */
-@media (max-width: 768px) {
-  main {
-    margin: 20px;
-    padding: 20px;
+@media (min-width: 600px) {
+  #game-list-all {
+    grid-template-columns: 1fr 1fr;
   }
-
-  .location-section h2 {
-    font-size: 22px;
+}
+@media (min-width: 992px) {
+  #game-list-all {
+    grid-template-columns: 1fr 1fr 1fr;
   }
-
-  .game-scroll .game-card {
-    width: 180px;
-  }
-
-  .game-list-all {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    row-gap: 16px;
+}
+@media (min-width: 1400px) {
+  #game-list-all {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }
 
-/* =====================
-   SPIL GRID & CARDS
-   ===================== */
+.location-section h2 {
+  font-size: 22px;
+}
+
+.game-scroll .game-card {
+  width: 180px;
+}
+
 #game-list-all {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: clamp(1.5rem, 3vw, 2.5rem);
-  padding: 2rem 0;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  row-gap: 16px;
 }
 
 /* ====== DIALOG ====== */
 #game-dialog {
   width: min(800px, 90%);
   border: none;
-  border-radius: var(--radius);
-  background: var(--bg-card);
-  color: var(--text);
-  box-shadow: var(--shadow-lg);
+  border-radius: 16px;
+  background: var(--card-background-color);
+  color: black;
+  box-shadow: var(--shadow);
   padding: 0;
   overflow: hidden;
   animation: fadeIn 0.3s ease;
@@ -553,6 +549,10 @@ main {
 .dialog-details .game-description {
   margin-top: 1rem;
   line-height: 1.6;
+}
+
+footer {
+  font-family: var(--paragraph-font-family);
 }
 
 footer {
